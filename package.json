@@ -21,7 +21,10 @@
     "react-scripts": "2.1.8"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+
   },
   "eslintConfig": {
     "extends": "react-app"
