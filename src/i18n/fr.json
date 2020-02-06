@@ -1,0 +1,9 @@
+{
+    "Timer": "Temps",
+    "Victory": "Victoire",
+    "Play.Again": "Rejouer",
+    "You.Completed.The.Game.In": "Vous avez terminé le jeu en {sec} secondes",
+    "Enter.Username.For.Leaderboard": "Entrez votre pseudo pour apparaître dans le leaderboard",
+    "Send": "Envoyer",
+    "Leaderboard": "Classement"
+}
