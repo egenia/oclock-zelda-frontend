@@ -5,12 +5,12 @@ language: node_js
 node_js:
   - 12.13.0
 before_install:
-  - npm install -g gulp
+  - npm update
 script:
   - npm run build
 after_success:
   # Build the snap.
-  - docker run -v $(pwd):/cwd snapcore/snapcraft sh -c 'cd /cwd && snapcraft'
+  - docker run -v $(pwd):/cwd egenia/node-10-android-r26 sh -c 'cd /cwd && egenia'
 deploy:
   provider: releases
   api_key:
