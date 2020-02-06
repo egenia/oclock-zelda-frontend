@@ -1,8 +1,10 @@
 
+[![Build Status](https://travis-ci.com/egenia/oclock-zelda-frontend.svg?branch=master)](https://travis-ci.com/egenia/oclock-zelda-frontend)
+
 # Test technique o'clock
 
-Ce repository contient les codes sources de l'application FrontEnd du test technique Zelda.\s\s
-Auteur : Frédérik ISTACE\s\s
+Ce repository contient les codes sources de l'application FrontEnd du test technique Zelda.
+Auteur : Frédérik ISTACE
 Date de création : 06/02/2020
 
 ## Stack technique
