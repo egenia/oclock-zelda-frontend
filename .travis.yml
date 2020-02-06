@@ -3,12 +3,11 @@ services:
   - docker
 language: node_js
 node_js:
-  - 8.9.0
+  - 12.13.0
 before_install:
   - npm install -g gulp
 script:
-  - gulp build --prod
-  - gulp dist
+  - npm start
 after_success:
   # Build the snap.
   - docker run -v $(pwd):/cwd snapcore/snapcraft sh -c 'cd /cwd && snapcraft'
