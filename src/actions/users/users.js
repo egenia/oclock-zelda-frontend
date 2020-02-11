@@ -13,7 +13,7 @@ export const addUser = function (user, cbk) {
             .then(function (response) {
 
                 if (response && response.data){
-                    const result = response.data.message.user;
+                    const result = response.data.user;
                     dispatch(addUserAction([result]));
 
                     if (cbk) cbk(result);
