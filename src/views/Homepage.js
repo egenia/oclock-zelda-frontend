@@ -17,12 +17,12 @@ class Homepage extends React.Component {
         super(props);
 
         // Starting position as set in the config file
-        // this.START_X = map.startPosition.posX * 16;
-        // this.START_Y = map.startPosition.posY * 16;
+        this.START_X = map.startPosition.posX * 16;
+        this.START_Y = map.startPosition.posY * 16;
 
         // Debug position to start close to the diamond
-        this.START_X = 120;
-        this.START_Y = 50;
+        // this.START_X = 120;
+        // this.START_Y = 50;
 
         this.state = this.initState();
 
