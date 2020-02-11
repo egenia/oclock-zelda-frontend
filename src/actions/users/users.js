@@ -30,7 +30,12 @@ export const addUser = function (user, cbk) {
 export const getTopUsers = function (top, cbk) {
     return function (dispatch) {
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        return axios.get(APIUrl.getTopUsers) //  + top
+        return axios.get(APIUrl.getTopUsers,
+            {
+                headers: {
+                'Access-Control-Allow-Origin': '*'
+                }
+            }) //  + top
             .then(function (response) {
 
                 if (response && response.data){
