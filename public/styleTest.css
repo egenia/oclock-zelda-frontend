@@ -1,0 +1,135 @@
+.bush-top-left {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) 0 0;
+}
+
+.bush-top {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -17px 0;
+}
+
+.bush-top-right {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -34px 0;
+}
+
+.bush-middle-left {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) 0 -17px;
+}
+
+.bush-middle {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -17px -17px;
+}
+
+.bush-middle-right {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -34px -17px;
+}
+
+.bush-bottom-left {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) 0 -34px;
+}
+
+.bush-bottom {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -17px -34px;
+}
+
+.bush-bottom-right {
+    width: 16px;
+    height: 16px;
+    background: url(sprite.png) -34px -34px;
+}
+
+.diamond {
+    background: url(sprite.png) -50px -33px;
+}
+
+.link-bottom {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) 0 -50px;
+}
+
+.link-top {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -22px -50px;
+}
+
+.link-left {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -44px -50px;
+}
+
+.link-right {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -66px -50px;
+}
+
+.mud-top-left {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -119px 0;
+}
+
+.mud-top {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -136px 0;
+}
+
+.mud-top-right {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -153px 0;
+}
+
+.mud-middle-left {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -119px -17px;
+}
+
+.mud-middle {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -136px -17px;
+}
+
+.mud-middle-right {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -153px -17px;
+}
+
+.mud-bottom-left {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -119px -34px;
+}
+
+.mud-bottom {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -136px -34px;
+}
+
+.mud-bottom-right {
+    width: 22px;
+    height: 22px;
+    background: url(sprite.png) -153px -34px;
+}

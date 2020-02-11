@@ -12,13 +12,12 @@ import Homepage from './views/Homepage';
 export default class App extends Component {
 
     render() {
-        return (<>
+        return (
             <HashRouter>
                 <Switch>
                     <Route path="/" name="Homepage" component={Homepage} />
                 </Switch>
             </HashRouter>
-        </>
         );
     }
 

@@ -8,6 +8,7 @@ import TimeUtil from '../util/TimeUtil';
 import { FormattedMessage } from 'react-intl';
 import LeaderboardModal from './LeaderboardModal';
 import { getTopUsers } from '../actions/users/users';
+import GameOverModal from './GameOverModal';
 
 
 class Homepage extends React.Component {
@@ -15,12 +16,13 @@ class Homepage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.START_X = map.startPosition.posX * 20;
-        this.START_Y = map.startPosition.posY * 20;
+        // Starting position as set in the config file
+        // this.START_X = map.startPosition.posX * 16;
+        // this.START_Y = map.startPosition.posY * 16;
 
         // Debug position to start close to the diamond
-        // this.START_X = 100;
-        // this.START_Y = 40;
+        this.START_X = 120;
+        this.START_Y = 50;
 
         this.state = this.initState();
 
@@ -35,7 +37,7 @@ class Homepage extends React.Component {
         this.MAP_WALLS = MapUtil.toGeometry(map, '+');
         this.MAP_MUDS = MapUtil.toGeometry(map, 'x');
         this.MAP_DIAMOND = MapUtil.toGeometry(map, '$');
-        this.MAP_EXIT = { x: 799, y: 360, w: 2, h: 20 };
+        this.MAP_EXIT = { x: 630, y: 300, w: 2, h: 20 };
     }
 
     initState = () => {
@@ -44,6 +46,9 @@ class Homepage extends React.Component {
             y: this.START_Y,
             hasDiamond: false,
             start_date: new Date(),
+
+            heroLives: 3,
+            characterOrientation: 'top',
 
             modal: null
         };
@@ -76,18 +81,22 @@ class Homepage extends React.Component {
             switch (keyCode) {
                 case this.TOP_ARROW_KEYCODE:
                     newState.y -= 2;
+                    newState.characterOrientation = "top";
                     break;
 
                 case this.RIGHT_ARROW_KEYCODE:
                     newState.x += 2;
+                    newState.characterOrientation = "right";
                     break;
 
                 case this.DOWN_ARROW_KEYCODE:
                     newState.y += 2;
+                    newState.characterOrientation = "bottom";
                     break;
 
                 case this.LEFT_ARROW_KEYCODE:
                     newState.x -= 2;
+                    newState.characterOrientation = "left";
                     break;
 
                 default:
@@ -95,10 +104,11 @@ class Homepage extends React.Component {
 
             }
 
-            const heroNewHitbox = { x: newState.x, y: newState.y, w: 20, h: 20 };
+            const heroNewHitbox = { x: newState.x, y: newState.y, w: 16, h: 16 };
 
             // If hero has the diamond and exits
-            if(prevState.hasDiamond && PhysicsUtil.overlap(heroNewHitbox, this.MAP_EXIT)){
+            if (prevState.hasDiamond && PhysicsUtil.overlap(heroNewHitbox, this.MAP_EXIT)) {
+                console.log('exit')
                 return {
                     modal: <LeaderboardModal
                         time={TimeUtil.msUntilNow(this.state.start_date)}
@@ -113,7 +123,14 @@ class Homepage extends React.Component {
             }
             // If hero overlaps the mud, back to start position!
             if (PhysicsUtil.overlaps(heroNewHitbox, this.MAP_MUDS)) {
-                return this.initState();
+                if (this.state.heroLives === 1) {
+                    const stateToReturn = { ...this.initState(), modal: <GameOverModal playAgain={() => this.setState(this.initState())} /> }
+                    return stateToReturn
+                }
+                else {
+                    const stateToReturn = { ...this.initState(), heroLives: --prevState.heroLives }
+                    return stateToReturn;
+                };
             }
             // If hero does not overlap walls and does not get out of map bounds, authorize moving
             if (!PhysicsUtil.overlaps(heroNewHitbox, this.MAP_WALLS) && PhysicsUtil.withinStrict(heroNewHitbox, this.MAP_BOUNDS)) {
@@ -126,14 +143,45 @@ class Homepage extends React.Component {
 
     closeModal = () => this.setState({ modal: null });
 
+    pickHeroSprite = () => {
+        let heroClassname;
+
+        switch (this.state.characterOrientation) {
+            case 'top':
+                heroClassname = "link-top"
+                break;
+
+            case 'bottom':
+                heroClassname = "link-bottom"
+                break;
+
+            case 'left':
+                heroClassname = "link-left"
+                break;
+
+            case 'right':
+                heroClassname = "link-right"
+                break;
+
+            default:
+                break;
+
+        }
+        return heroClassname;
+    }
+
     render = () => {
         const { users } = this.props;
 
         return (
-            <div className="position-relative" style={{ width: this.MAP_BOUNDS.w + "px" }}>
+            <div className="position-relative" style={{ width: this.MAP_BOUNDS.w + "px", backgroundColor: '#948E4A' }}>
                 {/* The timer */}
                 <div className="position-absolute pixel-font ml-2 mt-2">
                     <FormattedMessage id="Timer" /> : {TimeUtil.msToTime(TimeUtil.msUntilNow(this.state.start_date))}
+                </div>
+
+                <div className="position-absolute pixel-font ml-2 mt-4">
+                    <FormattedMessage id="Life" /> {this.state.heroLives}
                 </div>
 
                 {/* The leaderboard */}
@@ -151,7 +199,7 @@ class Homepage extends React.Component {
 
                 {/* The hero */}
                 <div
-                    className="position-absolute bg-danger w-20px h-20px"
+                    className={"position-absolute w-20px h-20px " + this.pickHeroSprite()}
                     style={{ left: this.state.x, top: this.state.y }}>
                 </div>
 
