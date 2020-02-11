@@ -39,7 +39,7 @@ export const getTopUsers = function (top, cbk) {
             .then(function (response) {
 
                 if (response && response.data){
-                    const users = response.data.message.users;
+                    const users = response.data.users;
                     dispatch(getUsersAction(users));
 
                     if (cbk) cbk(users);
