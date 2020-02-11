@@ -4,7 +4,7 @@ const APIUrl = {
     rootUrl:            rootUrl,
 
     addUser:            rootUrl + "/user",              // POST
-    getTopUsers:        rootUrl + "/users/top/",        // GET
+    getTopUsers:        rootUrl + "/users/top",        // GET
 };
 
 export default APIUrl;
