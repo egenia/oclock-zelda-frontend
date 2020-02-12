@@ -17,4 +17,5 @@ Date de création : 06/02/2020
 > npm install  
 > npm start
 
-## Liens backend (Lambda AWS)
+## Configuration vers l'API
+Il faut modifier le .env en indiquant l'URL de l'API Gateway avec le staging afin de tester sur un autre environnement que fourni celui pour le test.
