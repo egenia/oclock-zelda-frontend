@@ -33,7 +33,11 @@ export const getTopUsers = function (top, cbk) {
         return axios.get(APIUrl.getTopUsers,
             {
                 headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'origin': 'http://ec2-3-134-102-83.us-east-2.compute.amazonaws.com:3001',
+                'referer': 'http://ec2-3-134-102-83.us-east-2.compute.amazonaws.com:3001/',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'cross-site'
                 }
             }) //  + top
             .then(function (response) {
