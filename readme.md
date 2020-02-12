@@ -16,3 +16,5 @@ Date de création : 06/02/2020
 > git clone https://gitlab.com/gettingnutz/zelda-frontend.git  
 > npm install  
 > npm start
+
+## Liens backend (Lambda AWS)
